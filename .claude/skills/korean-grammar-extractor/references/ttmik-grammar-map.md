@@ -1,12 +1,10 @@
 # TTMIK Grammar Map: Levels 1–10
 
 Quick-reference mapping Korean grammar patterns to TTMIK levels and lessons.
-Only core grammar patterns are listed. Lesson numbers follow the TTMIK PDF lesson-note books
-(the same files in this project: `TTMIK_Part1/2/3`).
-
-> Verified against the project PDFs. Word Builder (WB), Sentence Building Drill (SBD),
-> Advanced Idiomatic / Situational Expression, vocabulary, and tense-review lessons are
-> intentionally omitted from the grammar tables (they're noted in prose where useful).
+Only core grammar patterns are listed; lesson numbers follow the official TTMIK lesson-note
+numbering. Word Builder (WB), Sentence Building Drill (SBD), Advanced Idiomatic / Situational
+Expression, vocabulary, and tense-review lessons are intentionally omitted from the grammar
+tables (they're noted in prose where useful).
 
 ## Level 1
 | Lesson | Pattern | Core meaning |
@@ -232,6 +230,5 @@ and Situational Expressions between the grammar lessons above.*
   and (from Level 8 on) Advanced Idiomatic/Situational Expression lessons.
   Surface 汉字词 roots and contractions (e.g. 놓았 → 놨, 것은 → 건) in the vocabulary section rather
   than as grammar points.
-- Lesson numbers follow the TTMIK PDF lesson-note books bundled in this project.
 - A handful of "usage/expression" lessons (e.g. 너무, 괜찮아요, 어차피) teach a high-frequency word
   rather than a grammar ending; they're left out of the tables above.

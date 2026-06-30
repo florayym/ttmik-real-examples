@@ -53,9 +53,11 @@ These map content to filenames. They never depend on repo state.
   - `-ㄴ/는 것 같다` → `-것-같다.md`
   - `전혀` → `전혀.md`
 
-### Special files (underscore prefix)
+### Special files (underscore prefix, top-level)
 - Vocabulary → `_vocabulary.md`
 - Expressions → `_expressions.md`
+- These live at the **repo root**, not inside `level-X/` — vocab/expressions are scoped to their
+  source, not to a level, and are shared across all levels.
 
 ## Content Block Format
 
@@ -93,10 +95,10 @@ Notes on the block:
 
 ### Vocabulary / Expressions blocks
 
-````
-### 📄 目标文件：level-X/_vocabulary.md
+One block each (not per level — vocab/expressions are shared across all levels):
 
-# Level X — 词汇积累
+````
+### 📄 目标文件：_vocabulary.md
 
 ## [Source Title]
 
@@ -105,14 +107,24 @@ Notes on the block:
 | ... | ... | ... | ... |
 ````
 
-Same principle: full content, source section, no dates, no merge instruction.
+````
+### 📄 目标文件：_expressions.md
+
+## [Source Title]
+
+| 表达 | 意思 | 用法说明 |
+|------|------|----------|
+| ... | ... | ... |
+````
+
+Same principle: just the source section, no dates, no merge instruction.
 
 ## Output Structure
 
-Produce all blocks for the analysis, grouped by level, in this order per level:
-1. Each grammar point block (one per `level-X/[grammar].md`)
-2. The `_vocabulary.md` block
-3. The `_expressions.md` block
+Produce all blocks for the analysis in this order:
+1. Each grammar point block, grouped by level (one per `level-X/[grammar].md`)
+2. The `_vocabulary.md` block (one total, covering all grammar points in this analysis)
+3. The `_expressions.md` block (one total)
 
 Then end. Do NOT add:
 - A README block (Claude Code regenerates indexes from real state)
