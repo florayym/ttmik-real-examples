@@ -7,4 +7,4 @@
 | [-(으)ㄹ게요](-%28%EC%9C%BC%29%E3%84%B9%EA%B2%8C%EC%9A%94.md) | L3.06 | 4 |
 | [-네(요)](-%EB%84%A4%EC%9A%94.md) | L3.25 | 1 |
 
-📝 [词汇积累](_vocabulary.md) · 💡 [好用的表达](_expressions.md)
+📝 [词汇积累](../_vocabulary.md) · 💡 [好用的表达](../_expressions.md)

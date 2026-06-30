@@ -18,4 +18,4 @@
 | [-아/어지다](-%EC%95%84%EC%96%B4%EC%A7%80%EB%8B%A4.md) | L4.28 | 3 |
 | [-게 되다](-%EA%B2%8C-%EB%90%98%EB%8B%A4.md) | L4.29 | 2 |
 
-📝 [词汇积累](_vocabulary.md) · 💡 [好用的表达](_expressions.md)
+📝 [词汇积累](../_vocabulary.md) · 💡 [好用的表达](../_expressions.md)
