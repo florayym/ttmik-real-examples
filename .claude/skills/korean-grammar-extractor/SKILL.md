@@ -42,7 +42,10 @@ Strip timestamps for analysis.
 
 ### Step 2: Identify Target Grammar
 Consult `references/ttmik-grammar-map.md` to determine which grammar patterns belong to the
-requested level(s), then scan the text for occurrences.
+requested level(s), then scan the text for occurrences. The map is verified against the TTMIK
+lesson-note PDFs and lists only core grammar — Word Builder, Sentence Building Drills, vocabulary,
+tense-review, and Advanced Idiomatic/Situational Expression lessons are intentionally omitted. So a
+lesson number missing from a level's table is a non-grammar lesson, not a gap to invent grammar for.
 
 ### Step 3: Extract and Organize
 For each grammar point found:
@@ -64,7 +67,9 @@ and domain-specific terms.
 
 ### Step 6: Useful Expressions (好用的表达)
 Natural expressions worth learning that aren't necessarily the target grammar: idioms (관용 표현),
-colloquial contractions, slang, culturally specific phrases.
+colloquial contractions, slang, culturally specific phrases. TTMIK's Advanced Idiomatic Expression
+lessons (Levels 8-10, organized by body parts / themes like 눈·손·마음·말) sit outside the grammar
+map but make a good checklist for this section — surface matches when the text contains them.
 
 ## Output Format
 
