@@ -7,4 +7,4 @@
 | [-(ㄴ/는)다고](-%EB%8B%A4%EA%B3%A0.md) | L5.17 | 1 |
 | [-잖아(요)](-%EC%9E%96%EC%95%84%EC%9A%94.md) | L5.27 | 2 |
 
-📝 [词汇积累](_vocabulary.md) · 💡 [好用的表达](_expressions.md)
+📝 [词汇积累](../_vocabulary.md) · 💡 [好用的表达](../_expressions.md)

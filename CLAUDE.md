@@ -19,14 +19,14 @@ is structured and how new notes are merged in. When working in this repo, follow
 ttmik-real-examples/
 ├── CLAUDE.md                  ← this file (authoritative conventions)
 ├── README.md                  ← root index (auto-generated, see §6)
+├── _vocabulary.md             ← vocabulary (top-level, organized by source — see §4)
+├── _expressions.md            ← useful expressions (top-level, organized by source)
 ├── .claude/skills/            ← the two skills that produce note content
 │   ├── korean-grammar-extractor/   (analyzes Korean text → grammar analysis)
 │   └── study-notes-formatter/      (shapes analysis → per-file content blocks)
 ├── level-1/ ... level-10/     ← one folder per TTMIK level
 │   ├── README.md              ← per-level index (auto-generated, see §6)
-│   ├── [grammar].md           ← one file per grammar point
-│   ├── _vocabulary.md         ← vocabulary for this level
-│   └── _expressions.md        ← useful expressions for this level
+│   └── [grammar].md           ← one file per grammar point
 ```
 
 ## 3. The division of labor (important)
@@ -56,7 +56,10 @@ the only routing signal. You decide everything else by inspecting the actual rep
   `-ㄴ/는 것 같다 → -것-같다.md`, `전혀.md`.
 
 ### Special files
-- `_vocabulary.md`, `_expressions.md` (underscore prefix).
+- `_vocabulary.md`, `_expressions.md` (underscore prefix) live at the **repo top level**, not
+  inside `level-N/`. Vocabulary and expressions are scoped to their **source** (each is a
+  `## [Source]` section), not to a TTMIK level — a word from one video has no inherent level — so
+  they are shared across all levels rather than split per folder.
 
 ## 5. How to merge incoming content blocks
 
@@ -80,19 +83,23 @@ You will receive content blocks from the formatter, each headed by
 5. **Idempotency check** — if a `## [Source]` section with the same source title already exists
    in the target file, do not duplicate it. Ask the user whether to replace or skip.
 
-6. **For `_vocabulary.md` / `_expressions.md`** — same rule: append the new `## [Source]` table
-   section; don't touch existing ones.
+6. **For `_vocabulary.md` / `_expressions.md`** — these are the **top-level** files (`/_vocabulary.md`,
+   `/_expressions.md`), not per-level. Same rule: append the new `## [Source]` table section;
+   don't touch existing ones. If a `## [Source]` section already exists (e.g. the source already
+   contributed vocab from a different level's grammar), append the new rows into that existing
+   table rather than creating a duplicate source section.
 
 ## 6. Regenerating indexes (your job, not the skills')
 
 Indexes require seeing the whole level, so only you can build them — after merging.
 
 ### Per-level README (`level-N/README.md`)
-Rebuild by scanning every `*.md` in the folder (excluding README, `_vocabulary`, `_expressions`):
+Rebuild by scanning every `*.md` in the folder (excluding README):
 - Title = the file's H1 (text before ` —`).
 - TTMIK lesson = parsed from the `> TTMIK Level X Lesson Y` line → format `LX.0Y`.
 - Example count = number of `### 例句` headers in the file.
 - **No date column** (chronology lives in git history).
+- The footer links point **up** to the shared top-level files (`../_vocabulary.md`, `../_expressions.md`).
 
 Table format:
 ```markdown
@@ -103,12 +110,13 @@ Table format:
 | [-거든요](-%EA%B1%B0%EB%93%A0%EC%9A%94.md) | L5.05 | 2 |
 ...
 
-📝 [词汇积累](_vocabulary.md) · 💡 [好用的表达](_expressions.md)
+📝 [词汇积累](../_vocabulary.md) · 💡 [好用的表达](../_expressions.md)
 ```
 
 ### Root README
 - Overview table: one row per level → 语法点数 (file count) and 总例句数 (sum of 例句 across files).
 - Source log table: 来源 → 涵盖级别. **No dates.**
+- A link to the top-level `_vocabulary.md` / `_expressions.md` near the top.
 
 ## 7. Markdown link encoding (critical)
 
