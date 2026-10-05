@@ -10,15 +10,16 @@
 
 | Level | 语法点数 | 总例句数 |
 |-------|---------|---------|
-| [Level 1](level-1/) | 3 | 4 |
-| [Level 2](level-2/) | 6 | 13 |
-| [Level 3](level-3/) | 7 | 13 |
-| [Level 4](level-4/) | 16 | 42 |
-| [Level 5](level-5/) | 9 | 14 |
-| [Level 6](level-6/) | 4 | 7 |
-| [Level 7](level-7/) | 4 | 5 |
-| [Level 8](level-8/) | 1 | 1 |
-| [Level 9](level-9/) | 3 | 6 |
+| [Level 1](level-1/) | 3 | 6 |
+| [Level 2](level-2/) | 7 | 18 |
+| [Level 3](level-3/) | 8 | 16 |
+| [Level 4](level-4/) | 16 | 55 |
+| [Level 5](level-5/) | 9 | 21 |
+| [Level 6](level-6/) | 6 | 12 |
+| [Level 7](level-7/) | 7 | 17 |
+| [Level 8](level-8/) | 1 | 2 |
+| [Level 9](level-9/) | 6 | 11 |
+| [Level 10](level-10/) | 2 | 5 |
 
 ## 📖 来源记录
 
@@ -27,3 +28,4 @@
 | 경희대 축제 vlog | L2, L3, L4, L5, L6, L9 |
 | 26학번 지원이요 15화 | L1, L2, L3, L4, L5, L6, L7, L9 |
 | ENA《클라이맥스》제작발표회 | L1, L2, L3, L4, L5, L6, L7, L8, L9 |
+| 성시경의 만날텐데 × 하지원 | L1, L2, L3, L4, L5, L6, L7, L8, L9, L10 |
