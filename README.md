@@ -6,6 +6,8 @@
 
 📝 [词汇积累](_vocabulary.md) · 💡 [好用的表达](_expressions.md)（按来源汇总，跨级别共享）
 
+📚 专题导航：[引用句法](topics/%E5%BC%95%E7%94%A8%E5%8F%A5%E6%B3%95.md)
+
 ## 📚 总览
 
 | Level | 语法点数 | 总例句数 |

@@ -27,6 +27,8 @@ ttmik-real-examples/
 ├── level-1/ ... level-10/     ← one folder per TTMIK level
 │   ├── README.md              ← per-level index (auto-generated, see §6)
 │   └── [grammar].md           ← one file per grammar point
+├── topics/                    ← cross-level thematic navigation pages (see §4)
+│   └── [theme].md
 ```
 
 ## 3. The division of labor (important)
@@ -60,6 +62,19 @@ the only routing signal. You decide everything else by inspecting the actual rep
   inside `level-N/`. Vocabulary and expressions are scoped to their **source** (each is a
   `## [Source]` section), not to a TTMIK level — a word from one video has no inherent level — so
   they are shared across all levels rather than split per folder.
+
+### Topic pages (`topics/[theme].md`)
+- For a grammar *family* that spans many levels (e.g. 引用句法 running from L5 to L10), a topic
+  page is a hand-curated navigation index: a progression table linking out to the real per-level
+  files (`../level-X/[grammar].md`), plus optional prose (e.g. a "口语缩略链" simplification chain)
+  and a "待采집" (not-yet-collected) table of lessons in the family with no real-world examples yet.
+- **No duplicated examples.** A topic page never repeats 例句 content — only links, one-line
+  summaries, and planning notes. The per-level file is still the only source of truth for examples.
+- Unlike grammar-point files, a topic page is a single whole-file write (not source-accumulating) —
+  when new material surfaces for a theme, update the existing table/prose in place rather than
+  appending a `## [Source]` section.
+- Not counted in any `level-N/README.md` (they live outside every level). Link topic pages from
+  the root README instead (see §6).
 
 ## 5. How to merge incoming content blocks
 
@@ -117,6 +132,7 @@ Table format:
 - Overview table: one row per level → 语法点数 (file count) and 总例句数 (sum of 例句 across files).
 - Source log table: 来源 → 涵盖级别. **No dates.**
 - A link to the top-level `_vocabulary.md` / `_expressions.md` near the top.
+- A link to each file in `topics/` near the top, alongside the vocabulary/expressions links.
 
 ## 7. Markdown link encoding (critical)
 

@@ -59,6 +59,14 @@ These map content to filenames. They never depend on repo state.
 - These live at the **repo root**, not inside `level-X/` — vocab/expressions are scoped to their
   source, not to a level, and are shared across all levels.
 
+### Topic pages (optional, for grammar families spanning many levels)
+- A thematically-linked grammar family (e.g. 引용句법 running L5→L10) → `topics/[theme].md`
+- Content is a progression table linking to the real `level-X/[grammar].md` files — **never**
+  duplicate example sentences here, only links + one-line summaries + optional prose/planning
+  notes (e.g. a "待采집" table of lessons in the family with no real examples yet).
+- This is the one block type that is a single whole-file write, not source-accumulating — Claude
+  Code updates it in place rather than appending a `## [Source]` section.
+
 ## Content Block Format
 
 For each grammar point, output a block in this shape:
