@@ -28,6 +28,7 @@ ttmik-real-examples/
 │   ├── README.md              ← per-level index (auto-generated, see §6)
 │   └── [grammar].md           ← one file per grammar point
 ├── topics/                    ← cross-level thematic navigation pages (see §4)
+│   ├── README.md              ← hub: topic list, shared legend, lessons shared between topics
 │   └── [theme].md
 ```
 
@@ -76,9 +77,22 @@ the only routing signal. You decide everything else by inspecting the actual rep
 
 ### Topic pages (`topics/[theme].md`)
 - For a grammar *family* that spans many levels (e.g. 引用句法 running from L5 to L10), a topic
-  page is a hand-curated navigation index: a progression table linking out to the real per-level
-  files (`../level-X/[grammar].md`), plus optional prose (e.g. a "口语缩略链" simplification chain)
-  and a "待采집" (not-yet-collected) table of lessons in the family with no real-world examples yet.
+  page is a hand-curated navigation index linking out to the real per-level files
+  (`../level-X/[grammar].md`). `topics/README.md` is the hub: list of topic pages, the shared
+  reading legend, lessons that sit on two or more pages, and notes on lesson numbers.
+- Two kinds: **形态型** (start from a form and show how it is composed/contracted; may be laid out
+  as a matrix, e.g. 引用句法) and **意义型** (start from a meaning; family table in lesson order +
+  中文对照 + 辨析/形态拆解 taken from the lecture notes).
+- Every lesson cited on a topic page must be checked against that lesson's lecture-note text (the
+  form really is taught there). The family table's 原文回指 column lists only back-references the
+  lecture notes state explicitly ("In Level X Lesson Y…" / "the previous lesson").
+- Status labels are words, not symbols: **有例句** (link to the file holding a real example of that
+  exact form), **待采集** (TTMIK teaches it, repo has no example yet), **附带出现** (an example of the
+  form already sits in another file — name the file and quote the fragment), **—** (TTMIK has no
+  such lesson/combination; write no form in that cell). A form TTMIK never teaches appears only in a
+  page's 「课程外」 table, and only when the repo already holds a real example of it.
+- After merging new notes (§5), search `topics/` for the lesson just touched and update its label
+  (待采集 / 附带出现 → 有例句) so the pages stay true.
 - **No duplicated examples.** A topic page never repeats 例句 content — only links, one-line
   summaries, and planning notes. The per-level file is still the only source of truth for examples.
 - Unlike grammar-point files, a topic page is a single whole-file write (not source-accumulating) —
@@ -143,7 +157,8 @@ Table format:
 - Overview table: one row per level → 语法点数 (file count) and 总例句数 (sum of 例句 across files).
 - Source log table: 来源 → 涵盖级别. **No dates.**
 - A link to the top-level `_vocabulary.md` / `_expressions.md` near the top.
-- A link to each file in `topics/` near the top, alongside the vocabulary/expressions links.
+- A `📚 专题导航：` line near the top, alongside the vocabulary/expressions links: first the hub
+  (`topics/README.md`, labelled 专题总览), then each topic page labelled by its H1 title.
 
 ## 7. Markdown link encoding (critical)
 
