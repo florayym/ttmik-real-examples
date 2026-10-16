@@ -57,6 +57,17 @@ the only routing signal. You decide everything else by inspecting the actual rep
 - Examples: `-거든요.md`, `-(으)니까.md`, `-아/어 주다 → -아어-주다.md`,
   `-ㄴ/는 것 같다 → -것-같다.md`, `전혀.md`.
 
+### TTMIK lesson numbers (`> TTMIK Level X Lesson Y`)
+- The number must match a row in `.claude/skills/korean-grammar-extractor/references/ttmik-grammar-map.md`
+  **and** that lesson's lecture notes must actually teach the form. The lesson-note PDFs' page headers
+  and TTMIK's official course list are authoritative; a few cross-references *inside* the PDF text are
+  wrong — never copy those: L5-29 calls the -다고 lesson "Lesson 16" (it is L5-17, as L7-17 and
+  L10-14 correctly say); L8-6 calls 무슨 말이에요? "Level 6 Lesson 2" (it is L6-12); and the PDF page
+  header of L6-2 is misprinted "LEVEL 6 LESSON 12".
+- The file lives in the folder of that lesson's level (`level-X/`).
+- A form that no lesson teaches gets no lesson number: write 「TTMIK 未单独成课」 and point to the
+  closest lesson instead of inventing one.
+
 ### Special files
 - `_vocabulary.md`, `_expressions.md` (underscore prefix) live at the **repo top level**, not
   inside `level-N/`. Vocabulary and expressions are scoped to their **source** (each is a
@@ -141,6 +152,10 @@ because the first `)` closes the link early. **URL-encode every internal link** 
 READMEs:
 - `(` → `%28`  `)` → `%29`  `+` → `%2B`  space → `%20`
 - Korean characters can stay literal (GitHub handles them), but encoding them is also fine.
+- **Normalize the filename to NFC before encoding.** macOS can hand back decomposed (NFD) Hangul
+  from the filesystem, while the names stored in git are NFC; an NFD-encoded link does not resolve
+  on GitHub (raw.githubusercontent.com returns 404 for it). In Python:
+  `urllib.parse.quote(unicodedata.normalize("NFC", name))`.
 - After generating any README, verify each link resolves to a real file.
 
 Example: `-(으)니까.md` → link target `-%28%EC%9C%BC%29%EB%8B%88%EE%9D%8C.md`

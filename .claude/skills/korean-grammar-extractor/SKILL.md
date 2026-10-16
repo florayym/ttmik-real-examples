@@ -41,11 +41,21 @@ Auto-generated transcripts contain errors. Identify likely transcription errors 
 Strip timestamps for analysis.
 
 ### Step 2: Identify Target Grammar
-Consult `references/ttmik-grammar-map.md` to determine which grammar patterns belong to the
-requested level(s), then scan the text for occurrences. The map is verified against the TTMIK
-lesson-note PDFs and lists only core grammar — Word Builder, Sentence Building Drills, vocabulary,
-tense-review, and Advanced Idiomatic/Situational Expression lessons are intentionally omitted. So a
-lesson number missing from a level's table is a non-grammar lesson, not a gap to invent grammar for.
+Consult `references/ttmik-grammar-map.md`. It lists **every** lesson of TTMIK Core Grammar
+Levels 1–10 (Level 1 has 26 lessons, Levels 2–10 have 31), each with a type tag and a one-line
+「教什么」summary, checked against TTMIK's official course tables of contents.
+
+- When the user names a lesson ("Level 4 Lesson 12"), look it up and target exactly what that row
+  says it teaches. Don't guess from memory: lesson numbers in the old audio era and in other
+  learners' notes are often off by one or two.
+- When the user names a level or range, the grammar targets are the rows tagged **语法** (plus
+  **总结** if they ask about tenses). The other tags still matter, but they route elsewhere:
+  构词 (Word Builder) → 汉字词 in 词汇积累; 惯用语 / 情境 / 表达 → 好用的表达; 活用 and 书写
+  (irregulars, contractions, spacing) → mention inside 拆解 when the text shows them;
+  操练 / 复习 contain no new grammar, so never use them as a lesson citation.
+- When one pattern is taught across several lessons, the map's 跨课对照 section lists them; cite all.
+- If a pattern in the text isn't taught as its own TTMIK lesson, say 「TTMIK 未单独成课」 and point
+  to the closest lesson rather than inventing a lesson number.
 
 ### Step 3: Extract and Organize
 For each grammar point found:
@@ -67,16 +77,16 @@ and domain-specific terms.
 
 ### Step 6: Useful Expressions (好用的表达)
 Natural expressions worth learning that aren't necessarily the target grammar: idioms (관용 표현),
-colloquial contractions, slang, culturally specific phrases. TTMIK's Advanced Idiomatic Expression
-lessons (Levels 8-10, organized by body parts / themes like 눈·손·마음·말) sit outside the grammar
-map but make a good checklist for this section — surface matches when the text contains them.
+colloquial contractions, slang, culturally specific phrases. The map's 惯用语 rows (Levels 8–10,
+organized by 눈 / 귀 / 손 / 마음 / 말…) and 情境 rows (refusing, agreeing, regret, asking directions…)
+make a good checklist here: when the text contains one, cite that lesson.
 
 ## Output Format
 
 ```
 ## [Grammar Point Name] — TTMIK Level X Lesson Y
 
-> 📖 语法核心：[one-line Chinese summary]
+> 📖 语法核心：[one-line Chinese summary, consistent with the map's 教什么 for that lesson]
 
 ### 例句 1
 **原句：** [Korean]
@@ -126,5 +136,5 @@ map but make a good checklist for this section — surface matches when the text
 7. **Distinguish registers.** Mark 반말 / 존댓말 / formal.
 
 ## TTMIK Grammar Reference
-Read `references/ttmik-grammar-map.md` to verify levels, find lesson numbers, or check what
-grammar exists at a given level.
+Read `references/ttmik-grammar-map.md` for every lesson number, its type, and what it teaches.
+Every Level X Lesson Y you write in a header must match a row there.
