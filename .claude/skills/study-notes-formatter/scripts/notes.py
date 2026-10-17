@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Repo tool for study-notes-formatter.
 
-  notes.py lookup LESSON     which note file holds a TTMIK lesson (L8-4, 8-4, "Level 8 Lesson 4"),
-                             plus the lesson-table row and its 子形态核对 entries
+  notes.py lookup LESSON...  which note file holds these TTMIK lessons (L8-4, 8-4), with each
+                             lesson's table row and 子形态核对 entries
   notes.py lessons           every note file with the lessons on its TTMIK line
   notes.py index [--diff]    rebuild README.md and level-N/README.md
                              (--diff: print what would change, write nothing)
@@ -164,28 +164,34 @@ def stale_indexes():
 
 # ---------------------------------------------------------------- commands
 
-def cmd_lookup(arg):
+def cmd_lookup(args):
+    """A point's header may name several lessons, all teaching its form: any one with a file decides."""
     rows, sub = lesson_table()
-    key = parse_key(arg)
-    if key not in rows:
-        print(f"{tag(key)} is not a lesson in the lesson table")
-        return 1
-    typ, pattern, teaches = rows[key]
-    print(f"{tag(key)}  {typ} · {pattern} — {teaches}")
-    if typ in ("操练", "复习"):
-        print("  (teaches nothing new — never file under it)")
-    hits = file_for(key)
-    for p in hits:
-        print(f"file: {rel(p)}")
-    if not hits:
-        name = suggest_name(pattern)
-        print("file: none" + (f" — a new file would be level-{key[0]}/{name}" if name else ""))
+    keys = [parse_key(a) for a in args]
+    for key in keys:
+        if key not in rows:
+            print(f"{tag(key)} is not a lesson in the lesson table")
+            return 1
+    for key in keys:
+        typ, pattern, teaches = rows[key]
+        print(f"{tag(key)}  {typ} · {pattern} — {teaches}")
+        if typ in ("操练", "复习"):
+            print("  (teaches nothing new — never file under it)")
+        for table, cells in sub:
+            if any(re.search(rf"(?<![\d-]){re.escape(tag(key))}(?!\d)", c) for c in cells):
+                print(f"  子形态核对 · {table}: " + " | ".join(cells))
+    holders = [(k, p) for k in keys for p in file_for(k)]
+    if holders:
+        k, p = holders[0]
+        print(f"file: {rel(p)}  (holds {tag(k)})")
+    else:
+        name = suggest_name(rows[keys[0]][1])
+        print("file: none" + (f" — a new file would be level-{keys[0][0]}/{name}" if name else
+                              " — name a new file after the form, in level-{}/".format(keys[0][0])))
     for p, _, ls, _ in notes():
-        if key in ls[1:]:
-            print(f"also on the TTMIK line of: {rel(p)}")
-    for table, cells in sub:
-        if any(re.search(rf"(?<![\d-]){re.escape(tag(key))}(?!\d)", c) for c in cells):
-            print(f"子形态核对 · {table}: " + " | ".join(cells))
+        for k in keys:
+            if k in ls[1:]:
+                print(f"also on the TTMIK line of: {rel(p)}")
     return 0
 
 
@@ -350,7 +356,7 @@ def main(argv):
         return 0
     cmd, rest = argv[0], argv[1:]
     if cmd == "lookup" and rest:
-        return cmd_lookup(" ".join(rest))
+        return cmd_lookup(rest)
     if cmd == "lessons":
         return cmd_lessons()
     if cmd == "index":

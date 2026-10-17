@@ -56,10 +56,12 @@ two things are "the same grammar" is decided by what TTMIK teaches (the lesson t
    and `### 例句` blocks; the 词汇积累 and 好用的表达 tables. Everything else stays in the chat: 大意,
    本文语法一览, the teaching notes under each point (形态, 意思与语感, 中文对照, 和学过的课), 自测.
    No source title in the analysis: ask for one.
-3. **Route each point** by the first lesson in its header.
-   - `notes.py lookup L8-4` prints the file holding that lesson (or `none` and a
-     suggested name), the lesson-table row and its 子形态核对 entries.
-   - File found → append to it. None → create one in `level-X/` (naming below).
+3. **Route each point** by the lessons in its header. Every lesson in a header teaches that exact
+   form (related lessons are only mentioned in the teaching notes), so a file holding any of them is
+   the point's file.
+   - `notes.py lookup L3-9 L4-27` prints each lesson's row and 子形态核对 entries, and the file that
+     holds one of them — or, if none does, a suggested new file under the first lesson.
+   - File found → append to it. None → create it in `level-X/` of the first lesson (naming below).
    - 「TTMIK 未单独成课（最接近：Level X Lesson Y）」 → the closest lesson's file, with a 讲解 that says
      the form has no lesson of its own. No closest lesson → a row in the source's `_expressions.md`
      table.

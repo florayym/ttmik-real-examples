@@ -53,8 +53,9 @@ in headers, in 和学过的课, in 讲解 — instead of recalling it:
    子形态核对 lists the known cases. Never copy a lesson number out of the PDF text unchecked.
 3. Still unsure: write 「课号待核实」. A missing number costs one look later; a wrong one quietly
    teaches the wrong lesson.
-4. A form taught in several lessons: the lesson that teaches the exact form first, related lessons
-   after it. The student starts with the first.
+4. The header names only lessons that teach this exact form. When several do (动词 + 것 같다 is
+   taught in both L3-9 and L4-27), list them all, earliest first. Lessons that are merely related
+   belong under 和学过的课, not in the header.
 
 ## Teaching a text
 
