@@ -14,9 +14,9 @@
 |-------|---------|---------|
 | [Level 1](level-1/) | 3 | 6 |
 | [Level 2](level-2/) | 6 | 17 |
-| [Level 3](level-3/) | 9 | 17 |
+| [Level 3](level-3/) | 8 | 17 |
 | [Level 4](level-4/) | 15 | 54 |
-| [Level 5](level-5/) | 10 | 41 |
+| [Level 5](level-5/) | 11 | 41 |
 | [Level 6](level-6/) | 7 | 15 |
 | [Level 7](level-7/) | 10 | 25 |
 | [Level 8](level-8/) | 2 | 3 |
