@@ -21,7 +21,7 @@ ttmik-real-examples/
 ├── README.md                  ← root index (auto-generated, see §6)
 ├── _vocabulary.md             ← vocabulary (top-level, organized by source — see §4)
 ├── _expressions.md            ← useful expressions (top-level, organized by source)
-├── .claude/skills/            ← the two skills that produce note content
+├── .claude/skills/            ← source copies of the two skills that produce note content (§3)
 │   ├── korean-grammar-extractor/   (analyzes Korean text → grammar analysis)
 │   └── study-notes-formatter/      (shapes analysis → per-file content blocks)
 ├── level-1/ ... level-10/     ← one folder per TTMIK level
@@ -38,19 +38,47 @@ Three roles, each only does what it can do correctly:
 
 | Role | Sees | Produces |
 |------|------|----------|
-| **korean-grammar-extractor** (skill) | Korean text only | grammar analysis (no dates, no file structure) |
+| **korean-grammar-extractor** (skill) | Korean text (+ TTMIK lesson notes, when available) | grammar analysis with checked lesson numbers (no dates, no file structure) |
 | **study-notes-formatter** (skill) | the analysis + naming rules | content blocks tagged with a target filename |
-| **Claude Code (you)** | the **real repo state** (via git) + this file | merge decisions, file writes, indexes, commits |
+| **Repo session (you)** | the **real repo state** (via git) + this file | merge decisions, file writes, indexes, topic labels, commits |
 
-The skills deliberately do NOT decide create-vs-append, do NOT generate indexes, and do NOT
-touch git. They cannot — they don't see the real repo. **You do.** The formatter hands you
-content blocks each labeled with a target filename (e.g. `level-5/-거든요.md`). That filename is
-the only routing signal. You decide everything else by inspecting the actual repo.
+The repo session is whichever session has a real checkout: Claude Code on the learner's machine,
+or a Claude chat session with this repo attached. Chat sessions can attach the repo and push, so
+one session can run all three roles in a row. The skills deliberately do NOT decide
+create-vs-append, do NOT generate indexes, and do NOT touch git — they don't look at the repo.
+**You do.** The formatter hands you content blocks each labeled with a target filename (e.g.
+`level-5/-거든요.md`). That filename is the only routing signal. You decide everything else by
+inspecting the actual repo.
+
+### Skill copies
+- `.claude/skills/` holds the source copies of both skills. Change them here, in git.
+- korean-grammar-extractor is also installed in the learner's Claude account, so chats without this
+  repo can still analyse text. That copy is made from this one: after changing the extractor here,
+  update the account copy too (SKILL.md through a skill proposal card; reference files by
+  re-uploading the folder).
+- study-notes-formatter has no account copy. It loads whenever this repo is attached, which is the
+  only time it's needed.
+- Each SKILL.md states its version under "Maintenance". If a session sees an account copy of the
+  extractor that differs from this one, follow this one and tell the learner the account copy needs
+  updating.
+- The TTMIK lesson-note PDFs and `TTMIK_Index.md` live in the learner's Claude Project, not in this
+  repo. When `references/ttmik-grammar-map.md` changes, regenerate `TTMIK_Index.md` from it: the
+  备注 column and the 子形态核对 appendix. The Project copy can only be overwritten whole, so check
+  its page column against the lesson-note PDFs before writing it back.
+- The account copy is updated through a skill proposal card, which carries SKILL.md only. Until the
+  folder is re-uploaded, the account's map may be older than this one; SKILL.md tells the extractor
+  to fall back on `TTMIK_Index.md` in that case, which is why the Index must stay current.
 
 ## 4. Naming conventions
 
 ### Folders
 - A grammar point taught at TTMIK Level N lives under `level-N/`.
+- When the analysis lists several lessons, the first one (the lesson that teaches the exact form)
+  decides the folder.
+- One file per lesson's form: don't combine forms from different lessons into one file.
+- A form marked 「TTMIK 未单独成课」 goes into the file of the closest lesson the analysis names; with
+  no closest lesson, it goes into `_expressions.md`.
+- Nothing marked 「课号待核实」 is saved until its lesson has been checked.
 
 ### Grammar-point filenames
 - Filename = the grammar pattern itself, Korean kept as-is.
@@ -60,11 +88,9 @@ the only routing signal. You decide everything else by inspecting the actual rep
 
 ### TTMIK lesson numbers (`> TTMIK Level X Lesson Y`)
 - The number must match a row in `.claude/skills/korean-grammar-extractor/references/ttmik-grammar-map.md`
-  **and** that lesson's lecture notes must actually teach the form. The lesson-note PDFs' page headers
-  and TTMIK's official course list are authoritative; a few cross-references *inside* the PDF text are
-  wrong — never copy those: L5-29 calls the -다고 lesson "Lesson 16" (it is L5-17, as L7-17 and
-  L10-14 correctly say); L8-6 calls 무슨 말이에요? "Level 6 Lesson 2" (it is L6-12); and the PDF page
-  header of L6-2 is misprinted "LEVEL 6 LESSON 12".
+  **and** that lesson's lecture notes must actually teach the form. The map's 子形态核对 section lists
+  the sub-forms that are easy to misplace, the common forms no lesson teaches, and the few
+  cross-references inside the PDFs that are wrong (never copy those).
 - The file lives in the folder of that lesson's level (`level-X/`).
 - A form that no lesson teaches gets no lesson number: write 「TTMIK 未单独成课」 and point to the
   closest lesson instead of inventing one.
