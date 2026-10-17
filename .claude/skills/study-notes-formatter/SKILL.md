@@ -62,9 +62,9 @@ two things are "the same grammar" is decided by what TTMIK teaches (the lesson t
    - `notes.py lookup L3-9 L4-27` prints each lesson's row and 子形态核对 entries, and the file that
      holds one of them — or, if none does, a suggested new file under the first lesson.
    - File found → append to it. None → create it in `level-X/` of the first lesson (naming below).
-   - 「TTMIK 未单独成课（最接近：Level X Lesson Y）」 → the closest lesson's file, with a 讲解 that says
-     the form has no lesson of its own. No closest lesson → a row in the source's `_expressions.md`
-     table.
+   - 「TTMIK 未单独成课（最接近：Level X Lesson Y）」 → the closest lesson's file. If its 讲解 doesn't
+     already say so, add one sentence: the form has no lesson of its own and sits here under
+     Level X Lesson Y. No closest lesson → a row in the source's `_expressions.md` table.
    - 「课号待核实」 → don't file it; name it in the report.
    - The header's lesson doesn't match the lesson table (子形态核对 puts the form in another lesson,
      or the row teaches something else) → don't file it; ask.
@@ -89,6 +89,9 @@ two things are "the same grammar" is decided by what TTMIK teaches (the lesson t
      ```
      A point with several lessons lists them all in the analysis's order:
      `> TTMIK Level 7 Lesson 18 · Level 10 Lesson 12`.
+     The file stands for the lesson, so its H1 and 语法核心 describe the lesson's form. When the point
+     is a sub-form (a 子形态核对 row) or a 未单独成课 form filed under its closest lesson, take them
+     from the lesson's row in the lesson table instead of from the point.
    - Existing file: leave its H1 and header lines alone; append `---` and the `## <source title>`
      section. If the source already has a section in that file, ask whether to replace or skip it.
    - Copy the example blocks as written, numbered from 1 inside each source section.
@@ -113,9 +116,9 @@ two things are "the same grammar" is decided by what TTMIK teaches (the lesson t
 
 ## Naming a new file
 
-Name it after the form TTMIK teaches (the lesson table's pattern, not a conjugated form from the
-text), Korean kept as-is: drop `/`, spell out `~`, spaces become `-`. `-거든요.md`, `-(으)니까.md`,
-`-아/어 주다` → `-아어-주다.md`, `전혀.md`.
+Name it after the lesson's form in the lesson table (not a conjugated form from the text; `notes.py
+lookup` suggests one), Korean kept as-is: drop `/`, spell out `~`, spaces become `-`. `-거든요.md`,
+`-(으)니까.md`, `-아/어 주다` → `-아어-주다.md`, `전혀.md`, `과거시제 총정리` → `과거시제-총정리.md`.
 
 ## Editing by hand
 

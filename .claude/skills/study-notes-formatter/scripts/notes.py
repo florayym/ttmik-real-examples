@@ -94,6 +94,7 @@ def suggest_name(pattern):
     """A starting point for a new file's name, from the lesson table's pattern."""
     first = re.split(r"[,，]", pattern)[0]
     first = re.sub(r"^(?:N|V|形容词|动词|疑问词)\s*\+\s*", "", first.strip())
+    first = re.sub(r"(?<=[가-힣])\s+-.*$", "", first)              # 어떨 때는 -고 → 어떨 때는
     first = re.sub(r"[（(][^)）]*[一-鿿][^)）]*[)）]", "", first)   # drop Chinese notes like （1）
     first = re.sub(r"\s*\+\s*N$", "", first)
     if not re.search(r"[가-힣ㄱ-ㅎ]", first) or re.search(r"[一-鿿]", first):
