@@ -40,6 +40,6 @@
 
 ## 课号说明
 
-- 课号以讲义 PDF 的页眉和 TTMIK 官方课程目录为准，和 `.claude/skills/korean-grammar-extractor/references/ttmik-grammar-map.md` 一致。
+- 课号以讲义 PDF 的页眉和 TTMIK 官方课程目录为准，和 `skills/korean-grammar-extractor/references/ttmik-grammar-map.md` 一致。
 - 讲义正文里有几处回指写错了，专题页一律不照抄：L5-29 把 -다고 那一课写成「Level 5 Lesson 16」（实为 L5-17；L7-17、L10-14 都写作 Lesson 17）；L8-6 把 무슨 말이에요? 那一课写成「Level 6 Lesson 2」（实为 L6-12）；L6-2 的讲义页眉误印为「LEVEL 6 LESSON 12」。
 - TTMIK 没有单独成课的形态不给课号：只有在 repo 已经采到真实例句时，才列进各页的「课程外」表，并注明"TTMIK 无专课"。
